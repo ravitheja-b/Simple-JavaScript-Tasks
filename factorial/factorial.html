@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Factorial Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color:aliceblue;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        h2 {
+            color: #007BFF;
+            margin-bottom: 20px;
+        }
+        input {
+            padding: 10px;
+            font-size: 16px;
+            margin: 10px 0;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            width: 200px;
+            transition: border-color 0.3s;
+        }
+        input:focus {
+            border-color: #007BFF;
+            outline: none;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        #answer {
+            margin-top: 15px;
+            font-weight: bold;
+            font-size: 18px;
+        }
+    </style>
+    <script>
+        function factorial() {
+            var no = Number(document.getElementById("num").value);
+            var fact = 1;
+
+            for (var i = 1; i <= no; i++) {
+                fact *= i;
+            }
+
+            document.getElementById("answer").value = fact;
+        }
+    </script>
+</head>
+<body>
+
+    <h2>Factorial Calculator</h2>
+    <label for="num">Enter a Number:</label>
+    <input type="number" id="num" placeholder="Enter number" min="0">
+    <button onclick="factorial()">Calculate Factorial</button>
+    <input type="text" id="answer" readonly placeholder="Result will be displayed here">
+
+</body>
+</html>

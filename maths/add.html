@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Addition Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color:aliceblue;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        h2 {
+            color: #007BFF;
+            margin-bottom: 20px;
+        }
+        label {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        input {
+            padding: 10px;
+            font-size: 16px;
+            margin-bottom: 20px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            width: 200px;
+            transition: border-color 0.3s;
+        }
+        input:focus {
+            border-color: #007BFF;
+            outline: none;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+    </style>
+    <script>
+        function add() {
+            var a = Number(document.getElementById("first").value);
+            var b = Number(document.getElementById("second").value);
+            var c = a + b;
+            alert("The sum is: " + c);
+        }
+    </script>
+</head>
+<body>
+
+    <h2>Simple Addition Calculator</h2>
+    
+    <label for="first">Enter the First Number:</label>
+    <input type="number" id="first" placeholder="First number" />
+
+    <label for="second">Enter the Second Number:</label>
+    <input type="number" id="second" placeholder="Second number" />
+
+    <button onclick="add()">Add</button>
+
+</body>
+</html>
