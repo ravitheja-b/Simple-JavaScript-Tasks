@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Current Date Demo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color:aliceblue;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        
+        h2 {
+            margin-bottom: 20px;
+            color: #007BFF;
+        }
+        p {
+            font-size: 18px;
+            font-weight: bold;
+        }
+        button {
+            padding: 10px 15px;
+            font-size: 16px;
+            background-color: #28a745;
+            color:white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Demo: Current Date</h2>
+    <p id="p1">Click the button to display the current date and time</p>
+    
+    <button onclick="printdate()">DISPLAY DATE</button>
+    <div id="result"></div>
+
+    <script>
+        function printdate() {
+            var date = new Date();
+            document.getElementById("p1").innerHTML = date;
+        }
+    </script>
+
+</body>
+</html>

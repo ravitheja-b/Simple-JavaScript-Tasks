@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        h2 {
+            color: #007BFF;
+            margin-bottom: 20px;
+        }
+        label {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        input, select {
+            padding: 10px;
+            font-size: 16px;
+            margin-bottom: 20px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            width: 220px;
+            transition: border-color 0.3s;
+        }
+        input:focus, select:focus {
+            border-color: #007BFF;
+            outline: none;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        #answer {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #555;
+        }
+    </style>
+    <script>
+        function calculate() {
+            var a = Number(document.getElementById("first").value);
+            var b = Number(document.getElementById("second").value);
+            var operation = document.getElementById("operation").value;
+            var result;
+
+            switch(operation) {
+                case 'add':
+                    result = a + b;
+                    break;
+                case 'subtract':
+                    result = a - b;
+                    break;
+                case 'multiply':
+                    result = a * b;
+                    break;
+                case 'divide':
+                    if (b !== 0) {
+                        result = a / b;
+                    } else {
+                        alert("Cannot divide by zero!");
+                        return;
+                    }
+                    break;
+                default:
+                    result = "Invalid Operation";
+            }
+
+            
+            document.getElementById("answer").value = result;
+        }
+    </script>
+</head>
+<body>
+
+    <h2>Simple Calculator</h2>
+    
+    <label for="first">Enter the First Number:</label>
+    <input type="number" id="first" placeholder="First number" />
+
+    <label for="second">Enter the Second Number:</label>
+    <input type="number" id="second" placeholder="Second number" />
+
+    <label for="operation">Choose an Operation:</label>
+    <select id="operation">
+        <option value="add">Addition</option>
+        <option value="subtract">Subtraction</option>
+        <option value="multiply">Multiplication</option>
+        <option value="divide">Division</option>
+    </select>
+
+    <button onclick="calculate()">Calculate</button>
+
+    <input type="text" id="answer" readonly placeholder="Result will appear here" />
+
+</body>
+</html>

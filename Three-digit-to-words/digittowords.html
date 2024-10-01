@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number to Text Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        input {
+            padding: 10px;
+            font-size: 16px;
+            margin-bottom: 20px;
+            width: 200px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            transition: border-color 0.3s;
+        }
+        input:focus {
+            border-color: #007BFF;
+            outline: none;
+        }
+        button {
+            padding: 10px 15px;
+            font-size: 16px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Number to Text Converter</h1>
+    <div>Please type a number (up to 3 digits):</div>
+    <input id="numberInput" type="number" maxlength="3" />
+    <button onclick="doConvert()">Convert to Text</button>
+    <div id="result"></div>
+
+    <script>
+        function doConvert() {
+            let numberInput = document.querySelector('#numberInput').value;
+            let myDiv = document.querySelector('#result');
+
+            let oneToTwenty = ['', 'one ', 'two ', 'three ', 'four ', 'five ', 'six ', 'seven ', 'eight ', 'nine ', 'ten ',
+                'eleven ', 'twelve ', 'thirteen ', 'fourteen ', 'fifteen ', 'sixteen ', 'seventeen ', 'eighteen ', 'nineteen '];
+            let tenth = ['', '', 'twenty ', 'thirty ', 'forty ', 'fifty ', 'sixty ', 'seventy ', 'eighty ', 'ninety '];
+
+            // Check input digit length
+            if (numberInput.length > 3) {
+                alert("Please enter a 3-digit number");
+                return;
+            }
+
+            // Check for special characters
+            var format_specialchars = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+            if (format_specialchars.test(numberInput)) {
+                alert("Invalid input! Please enter a valid number.");
+                return;
+            }
+
+            // Check for alphabets
+            var format_alphabets = /[a-zA-Z]/;
+            if (format_alphabets.test(numberInput)) {
+                alert("Alphabets are an invalid input.");
+                return;
+            }
+
+            // Pad the number with zeros for formatting
+            let num = ('000' + numberInput).slice(-3).match(/^(\d)(\d)(\d)$/);
+            if (!num) return;
+
+            let outputText = '';
+            outputText += num[1] != 0 ? oneToTwenty[Number(num[1])] + 'hundred ' : '';
+            outputText += num[2] != 0 ? (num[2] == '1' && num[3] != '0' ? oneToTwenty[Number(num[2] + num[3])] : tenth[num[2]] + oneToTwenty[num[3]]) : '';
+
+            myDiv.innerHTML = outputText || 'zero';
+        }
+    </script>
+
+</body>
+</html>
